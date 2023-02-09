@@ -1,10 +1,10 @@
-import config
 import os
 
 import telebot
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from . import bot_processing
+
+import config
 
 app = Flask(__name__)
 
@@ -14,6 +14,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+from . import bot_processing
 
 bot = telebot.TeleBot(config.token)
 bot_processing.init_bot(bot)
